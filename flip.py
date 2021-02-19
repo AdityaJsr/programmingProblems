@@ -6,7 +6,15 @@ import random
 def flip():
     heads = 0
     user_input = input("Enter the number of times you want to flip a coin : ")
-    for i in range(int(user_input)):
+    val = user_input
+    try:
+        val = int(user_input)
+    except ValueError:
+        print("That's not an int!")
+    # except TypeError:
+    #     print("That's not an int!")
+    
+    for i in range(val):
         coin = random.randint(0 , 1)
         if coin==1:
             heads += 1
