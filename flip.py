@@ -1,5 +1,10 @@
-# This is a program to to find the percentage of Heads/Tails of a coin flip
+"""
+title - This is a program to to find the percentage of Heads/Tails of a coin flip
+author name - Aditya Kumar
+creation time - 18 ‎February ‎2021
+modified time - 20 ‎February ‎2021
 
+"""
 
 import random
 
@@ -11,9 +16,6 @@ def flip():
         val = int(user_input)
     except ValueError:
         print("That's not an int!")
-    # except TypeError:
-    #     print("That's not an int!")
-    
     for i in range(val):
         coin = random.randint(0 , 1)
         if coin==1:

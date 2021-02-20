@@ -1,6 +1,9 @@
 """
- First Project 
-This is a basic program for string replacement
+title - This is a basic program for string replacement
+author name - Aditya Kumar
+creation time - 18 ‎February ‎2021
+modified time - 20 ‎February ‎2021
+
 """
 def replace():
     user_input = input("Enter the User name :")
