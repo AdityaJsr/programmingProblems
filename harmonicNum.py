@@ -1,3 +1,11 @@
+"""
+title - This is a program to print the harmonic number
+author name - Aditya Kumar
+creation time - 19 ‎February ‎2021
+modified time - 20 ‎February ‎2021
+
+"""
+
 def harmonic():
     user_input = input("Enter the number to find the nth value :")
     value = int(user_input)

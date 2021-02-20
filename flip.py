@@ -1,5 +1,5 @@
 """
-title - This is a program to to find the percentage of Heads/Tails of a coin flip
+title - This is a program to find the percentage of Heads/Tails of a coin flip
 author name - Aditya Kumar
 creation time - 18 ‎February ‎2021
 modified time - 20 ‎February ‎2021
@@ -27,4 +27,3 @@ def flip():
 
 if __name__=='__main__':
     flip()
-    

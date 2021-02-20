@@ -1,5 +1,5 @@
 """
-title - This is a program to to find if the entered year is leap year or not.
+title - This is a program to find if the entered year is leap year or not.
 author name - Aditya Kumar
 creation time - 19 ‎February ‎2021
 modified time - 20 ‎February ‎2021
@@ -31,4 +31,3 @@ def leapYear():
 
 if __name__ == "__main__":
     leapYear()
-    
