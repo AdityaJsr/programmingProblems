@@ -1,3 +1,7 @@
+"""
+The following program is to calculate if the enterd year is a leap year or not
+
+"""
 def leapYear():
     user_input = input("Enter the Year : ")
     input_lenghth = len(user_input)
