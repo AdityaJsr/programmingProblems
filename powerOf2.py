@@ -1,3 +1,11 @@
+"""
+title - This is a program to generate the exponent table of 2 from from user-input
+author name - Aditya Kumar
+creation time - 18 ‎February ‎2021
+modified time - 20 ‎February ‎2021
+
+"""
+
 def exponent():
     user_input = input("Enter a exponent value: ")
     if(user_input.isdigit()):
