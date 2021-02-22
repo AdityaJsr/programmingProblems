@@ -1,3 +1,11 @@
+"""
+title - This is a program calculate Euclidean distance from the coordinates.
+author name - Aditya Kumar
+creation time - 22 ‎February ‎2021, ‏‎16:05:21
+modified time - 22 ‎February ‎2021, ‏‎16:08:08
+
+"""
+
 import math
 
 def user_input():
