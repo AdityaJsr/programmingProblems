@@ -6,6 +6,7 @@ def convertor():
     ch = int(user_input())
     temp = float(input("Enter the temperature : "))
     if (ch == 1):
+        output = (temp*1.8)+32
         print("The Fahrenheit equivalent of "+str(temp)+"°C = "+str(output)+"°F")
         print(output)
     elif(ch == 2):
