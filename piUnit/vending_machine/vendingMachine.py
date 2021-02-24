@@ -1,34 +1,21 @@
-# count = 0
 
-# currency = ["1000","500","100","50","10","5","2","1"]
-# currencyCount = ["0","0","0","0","0","0","0","0"]
-# amount = int(input("Enter the amount you want to withdraw : "))
+def currency_counter(amount):
+    count = 0
+    currency = [1000,500,100,50,10,5,2,1]
+    currencyCount = [0, 0, 0, 0, 0, 0, 0, 0,0]
+    result = ('')
 
-# for i in range (8):
-#     while (amount >= int(currency[i])):
-#         a = i
-#         amount = amount - int(currency[i])
-#         count += 1
-# print(count)
-
- 
-def currency_count(change): 
-      
-    notes = [1000, 500, 100, 50, 20, 10, 5, 2, 1] 
-                 
-    note_count = [0, 0, 0, 0, 0, 0, 0, 0,0] 
-      
-    print ("Change : Note Count ") 
-
-    result = ""
-    for number1, number2 in zip(notes, note_count):
-        if change >= number1: 
-            number2 = change // number1  #floor division
-            change = change - number2 * number1
-            print (number1 ," : ", number2) 
-            result += (str(number1) +" : "+ str(number2) + ",") #converting integer to string take as list
-    return result
+    for c1, cc in zip (currency,currencyCount): 
+        while (amount >= c1):
+            cc = amount // c1
+            count += cc
+            amount = amount - cc*c1
+            print(f'{c1} \t: {cc}')
+            result += (str(c1) +" : "+ str(cc) + ",")
+    print("The minimum number of notes : "+str(count))
+    return (result)
 
 if __name__ == '__main__':
-    change = int(input("Enter The Money: "))
-    currency_count(change)
+    amount = int(input("Enter the amount : "))
+    print(f'currency : count')
+    currency_counter(amount)
