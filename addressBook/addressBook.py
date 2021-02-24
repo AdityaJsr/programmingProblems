@@ -7,18 +7,25 @@ modified time - ‎24 ‎February ‎2021, ‏‎
 
 """
 import json
-# class AddressBook:
+import pprint
 
-    # def newEntry(self , first, last, address , city , state , zip, phoneNumber):
-    #     self.first = first
-    #     self.last = last
-    #     self.address = address
-    #     self.city = city
-    #     self.state = state
-    #     self.zip = zip
-    #     self.phoneNumber = phoneNumber
 data = {}
+
+
+def choice():
+    ch = 0
+    print("Enter 1 to add ")
+    print("Enter 2 to edit ")
+    print("Enter 3 to delete ")
+    print("Enter 1 to add ")
+
+
 def createUser():
+    # Read Json File ->  Record.Json file
+    with open('record.json') as f:
+        data = json.loads(f.read())
+
+    # User Input Details
     firstName = input("Enter the first name : ")
     lastName = input("Enter the last name : ")
     address = input("Enter the address : ")
@@ -27,22 +34,59 @@ def createUser():
     zip = input("Enter the zip code : ")
     phoneNumber = input("Enter your Phone-Number : ")
 
-    data["firstName"] = firstName
-    data["lastName"] = lastName
-    data["address"] = address
-    data["city"] = city
-    data["state"] = state
-    data["zip"] = zip
-    data["phone-Number"] = phoneNumber
-    json_obj = json.dumps(data, indent=2)
-    return(json_obj)
+    # Create Details Dictionary ( JSON )
+    x = {"firstName": firstName,
+         "lastName": lastName,
+         "address": address,
+         "city": city,
+         "state": state,
+         "zip": zip,
+         "phoneNumber": phoneNumber
+         }
 
-def saveUser(json_obj):
-    record = open("myfile.json", "w") 
-    json.dump(json_obj, record, indent = 2) 
-    record.close()  
+    # Append  Details Dictionary to JSON['person']
+    data["person"].append(x)
+
+    # Serialize the date to json format
+    json_obj = json.dumps(data, indent=2)
+
+    # Saving Serialized Json to Record.Json file
+    with open("record.json", "w") as f:
+        f.write(json_obj)
+
+
+def showUserInJson():
+
+    # Read Json File ->  Record.Json file
+    with open('record.json') as f:
+        data = json.loads(f.read())
+        pprint.pprint(data)
+
+
+def showUser():
+
+    # Read Json File ->  Record.Json file
+    with open('record.json') as f:
+        data = json.loads(f.read())
+
+        for user in data['person']:
+            print("\nFirstName: " + user['firstName'] + "\n" + "Last Name : " + user['lastName'] + "\n" + "Address : " + user['address'] + "\n" +
+                  "City : " + user['city'] + "\n" + "State : " + user['state'] + "\n" + "Zipcode : " + user['zip'] + "\n" + "Phone Number : " + user['phoneNumber'] + "\n")
 
 
 if __name__ == "__main__":
-    data = createUser()
-    saveUser(data)
+    while True:
+        print(" ")
+        print("User Management Panel")
+        print("1.Create User  |  2.Show Users In Json Format   | 3. Show Users ")
+
+        val = input("Enter your choice : \n\n")
+
+        if(val == "1"):
+            createUser()
+        elif (val == "2"):
+            showUserInJson()
+        elif (val == "3"):
+            showUser()
+        else:
+            print("Choose menu options as 1 , 2 pr 3 to proceed further")
