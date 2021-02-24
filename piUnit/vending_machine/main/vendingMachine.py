@@ -17,5 +17,9 @@ def currency_counter(amount):
 
 if __name__ == '__main__':
     amount = int(input("Enter the amount : "))
+    try:
+        amount
+    except ValueError:
+        print("Incorrect value Enter number only!!")
     print(f'currency : count')
     currency_counter(amount)
