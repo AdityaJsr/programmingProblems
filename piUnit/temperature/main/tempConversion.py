@@ -20,19 +20,44 @@ def user_input():
     
 
 # The function for temperature conversion from Celsius to Fahrenheit.
+"""
+function:
+celsiusToFahrenheit() converts temperature from Fahrenheit to Celsius.
+
+argument:
+temp - user-input to temperature(from celsius to fahrenhiet)
+
+return value:
+output - the converted value of user_input(in fahrenheit)
+
+error:
+none
+
+"""
 def celsiusToFahrenheit(temp):
     output = int((temp*1.8)+32)
     print("The Fahrenheit equivalent of "+str(temp)+"°C = "+str(output)+"°F")
     return round(output)
+"""
+function:
+fahrenhietToCelsius() converts temperature from Fahrenheit to Celsius
 
+argument:
+temp - user-input to temperature(from fahrenhiet to celsius)
+
+return value:
+output - the converted value of user_input (in celsius)
+
+error:
+none
+
+"""
 # The function for temperature conversion from Fahrenheit to Celsius.
 def fahrenhietToCelsius(temp):
     output = (temp - 32)*(5/9)
     print("The Celsius equivalent of "+str(temp)+"°F = "+str(output)+"°C")
     return round(output)
 
-def hello():
-    print("This is random")
 # The main function.
 if __name__ == "__main__":
     user_input()
