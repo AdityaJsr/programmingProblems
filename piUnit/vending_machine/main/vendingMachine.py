@@ -1,3 +1,10 @@
+"""
+title - This is a program that calculate the minimum number of notes as well as the notes to be returned by the Vending Machine as a output.
+author name - Aditya Kumar
+creation time - ‎23 ‎February ‎2021, 21:23:24
+modified time - ‎24 ‎February ‎2021, ‏‎11:23:24
+
+"""
 
 def currency_counter(amount):
     count = 0
@@ -19,7 +26,7 @@ if __name__ == '__main__':
     amount = int(input("Enter the amount : "))
     try:
         amount
-    except ValueError:
-        print("Incorrect value Enter number only!!")
+    except ValueError as e:
+        print("Incorrect value Enter number only!!", e)
     print(f'currency : count')
     currency_counter(amount)

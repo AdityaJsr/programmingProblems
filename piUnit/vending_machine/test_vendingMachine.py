@@ -1,3 +1,11 @@
+"""
+title - This is the test case for the Vending Machine program.
+author name - Aditya Kumar
+creation time - 24 ‎February ‎2021, 10:23:24
+modified time - ‎24 ‎February ‎2021, ‏‎11:23:24
+
+"""
+
 import unittest
 from main.vendingMachine import *
 
