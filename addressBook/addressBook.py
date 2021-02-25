@@ -9,16 +9,6 @@ modified time - ‎24 ‎February ‎2021, ‏‎
 import json
 import pprint
 
-data = {}
-
-
-def choice():
-    ch = 0
-    print("Enter 1 to add ")
-    print("Enter 2 to edit ")
-    print("Enter 3 to delete ")
-    print("Enter 1 to add ")
-
 
 def createUser():
     # Read Json File ->  Record.Json file
@@ -50,7 +40,7 @@ def createUser():
     # Serialize the date to json format
     json_obj = json.dumps(data, indent=2)
 
-    # Saving Serialized Json to Record.Json file
+    # Saving Serialized Json to Record.Json file after appending.
     with open("record.json", "w") as f:
         f.write(json_obj)
 
@@ -73,14 +63,33 @@ def showUser():
             print("\nFirstName: " + user['firstName'] + "\n" + "Last Name : " + user['lastName'] + "\n" + "Address : " + user['address'] + "\n" +
                   "City : " + user['city'] + "\n" + "State : " + user['state'] + "\n" + "Zipcode : " + user['zip'] + "\n" + "Phone Number : " + user['phoneNumber'] + "\n")
 
+def delUser():
+    # Read Json File ->  Record.Json file
+    with open('record.json') as f:
+        data = json.loads(f.read())
+
+        # index to display for delete option
+        index = 1
+        for user in data['person']:
+            print(str(index)+"\t" + user['firstName']+" "+user['lastName']+"\n")
+            index += 1
+        indexDelete = int(input("Enput the index number of the user you want to delete : "))
+        del (data["person"][indexDelete-1])
+
+        # Serialize the date to json format
+        json_obj = json.dumps(data, indent=2)
+        # Saving Serialized Json to Record.Json file after deleting.
+        with open("record.json", "w") as f:
+            f.write(json_obj)
+        
 
 if __name__ == "__main__":
     while True:
         print(" ")
         print("User Management Panel")
-        print("1.Create User  |  2.Show Users In Json Format   | 3. Show Users ")
+        print(" 1.Create User \n 2.Show Users In Json Format \n 3. Show Users \n 4. Delete User")
 
-        val = input("Enter your choice : \n\n")
+        val = input("Enter your choice : \n")
 
         if(val == "1"):
             createUser()
@@ -88,5 +97,7 @@ if __name__ == "__main__":
             showUserInJson()
         elif (val == "3"):
             showUser()
+        elif (val == "4"):
+            delUser()
         else:
-            print("Choose menu options as 1 , 2 pr 3 to proceed further")
+            print("Choose menu options as 1 , 2 , 3 , or 4 to proceed further")
