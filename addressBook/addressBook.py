@@ -12,8 +12,7 @@ import pprint
 
 def createUser():
     # Read Json File ->  Record.Json file
-    with open('record.json') as f:
-        data = json.loads(f.read())
+    data = serialzeJson()
 
     # User Input Details
     firstName = input("Enter the first name : ")
@@ -46,50 +45,71 @@ def createUser():
 
 
 def showUserInJson():
-
     # Read Json File ->  Record.Json file
-    with open('record.json') as f:
-        data = json.loads(f.read())
-        pprint.pprint(data)
+    data = serialzeJson()
+    pprint.pprint(data)
 
 
 def showUser():
 
     # Read Json File ->  Record.Json file
-    with open('record.json') as f:
-        data = json.loads(f.read())
+    data = serialzeJson()
 
-        for user in data['person']:
-            print("\nFirstName: " + user['firstName'] + "\n" + "Last Name : " + user['lastName'] + "\n" + "Address : " + user['address'] + "\n" +
-                  "City : " + user['city'] + "\n" + "State : " + user['state'] + "\n" + "Zipcode : " + user['zip'] + "\n" + "Phone Number : " + user['phoneNumber'] + "\n")
+    for user in data['person']:
+        print("\nFirstName: " + user['firstName'] + "\n" + "Last Name : " + user['lastName'] + "\n" + "Address : " + user['address'] + "\n" +
+                "City : " + user['city'] + "\n" + "State : " + user['state'] + "\n" + "Zipcode : " + user['zip'] + "\n" + "Phone Number : " + user['phoneNumber'] + "\n")
 
 def delUser():
     # Read Json File ->  Record.Json file
+    data = serialzeJson()
+
+    # index to display for delete option
+    index = 1
+    for user in data['person']:
+        print(str(index)+"\t" + user['firstName']+" "+user['lastName']+"\n")
+        index += 1
+    indexDelete = int(input("Input the index number of the user you want to delete : "))
+    del (data["person"][indexDelete-1])
+
+    # Serialize the date to json format
+    json_obj = json.dumps(data, indent=2)
+    # Saving Serialized Json to Record.Json file after deleting.
+    with open("record.json", "w") as f:
+        f.write(json_obj)
+
+def editUser():
+    # Read Json File ->  Record.Json file
+    data = serialzeJson()
+
+    index = 1
+    for user in data['person']:
+        print(str(index)+"\t" + user['firstName']+" "+user['lastName']+"\n")
+        index += 1
+    indexEdit = int(input("Input the index number of the user you want to edit : "))
+    print("1. lastName \n2. address\n3. city \n4. state \n5. zip \n6. phoneNumber")
+    choice = str(input("Enter the field you want to edit : "))
+    update = str(input("Enter the Updated Data : "))
+    for user in data['person']:
+        data["person"][indexEdit-1][choice] = update
+
+    # Serialize the date to json format
+    json_obj = json.dumps(data, indent=2)
+    # Saving Serialized Json to Record.Json file after deleting.
+    with open("record.json", "w") as f:
+        f.write(json_obj)
+
+def serialzeJson():
     with open('record.json') as f:
         data = json.loads(f.read())
-
-        # index to display for delete option
-        index = 1
-        for user in data['person']:
-            print(str(index)+"\t" + user['firstName']+" "+user['lastName']+"\n")
-            index += 1
-        indexDelete = int(input("Enput the index number of the user you want to delete : "))
-        del (data["person"][indexDelete-1])
-
-        # Serialize the date to json format
-        json_obj = json.dumps(data, indent=2)
-        # Saving Serialized Json to Record.Json file after deleting.
-        with open("record.json", "w") as f:
-            f.write(json_obj)
-        
+    return(data)
 
 if __name__ == "__main__":
     while True:
         print(" ")
         print("User Management Panel")
-        print(" 1.Create User \n 2.Show Users In Json Format \n 3. Show Users \n 4. Delete User")
+        print(" 1.Create User \n 2.Show Users In Json Format \n 3. Show Users \n 4. Delete User \n 5. edit User")
 
-        val = input("Enter your choice : \n")
+        val = input("Enter your choice : \t")
 
         if(val == "1"):
             createUser()
@@ -99,5 +119,7 @@ if __name__ == "__main__":
             showUser()
         elif (val == "4"):
             delUser()
+        elif (val == "5"):
+            editUser()
         else:
-            print("Choose menu options as 1 , 2 , 3 , or 4 to proceed further")
+            print("Choose menu options as 1 , 2 , 3 , 4 or 5 to proceed further")
