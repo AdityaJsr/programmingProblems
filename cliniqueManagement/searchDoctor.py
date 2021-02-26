@@ -11,14 +11,18 @@ def byName():
     data = deSerialzeJson()
 
     for doctors in data['doctorsData']:
-        dName = doctors['name']
-        if(key == dName):
-            print("\nname: " + doctors['name'] + "\n" + "id : " + doctors['id'] + "\n" + "specialization : " + doctors['specialization'] + "\n" +
-                "shift : " + doctors['shift']+"\n")
-            return 
+        try:
+            dName = doctors['name'].split(' ')
+            if(key == dName[1])or(key == dName[2])or(key == dName[1]+" "+dName[2]):
+                print("\nname: " + doctors['name'] + "\n" + "id : " + doctors['id'] + "\n" + "specialization : " + doctors['specialization'] + "\n" +
+                    "shift : " + doctors['shift']+"\n")
+                return 
+        except IndexError:
+            pass
+        except Exception as e:
+            print("An unknown error is occouring", e)
+    print("Doctor not found")
 
-    print("Doctor not found \n Enter proper name : ") 
-    # byName()
 
     
             
