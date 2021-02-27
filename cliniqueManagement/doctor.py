@@ -1,10 +1,3 @@
-"""
-title - This program is Clinic Management system which keeps records a doctor's as well as patient's attributes .
-author name - Aditya Kumar
-creation time - 24 ‎February ‎2021, 17:23:24
-modified time - ‎24 ‎February ‎2021, ‏‎
-
-"""
 
 import json
 import os
@@ -21,7 +14,7 @@ def addDoctor():
 
         with open('clinicData.json') as f:
             if f.read() == '':
-
+                
                 x = createData()
 
                 doctorsData.append(x) 
@@ -83,13 +76,3 @@ def deSerialzeJson():
     with open('clinicData.json') as f:
         data = json.loads(f.read())
     return(data)
-
-
-# if  __name__ == "__main__":
-#     print("Clinique Management System")
-#     ch = input("1. Enter 1 to add a doctor \n2. Enter 2 to see all avaiable doctors : \nEnter your choice : ")
-
-#     if (ch =='1'):
-#         addDoctor()
-#     elif (ch == '2'):
-#         showDoctor()

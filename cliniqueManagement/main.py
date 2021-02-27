@@ -1,3 +1,11 @@
+"""
+title - This program is Clinic Management system which keeps records a doctor's as well as patient's attributes .
+author name - Aditya Kumar
+creation time - ‎26 ‎February ‎2021, ‏‎23:28:05
+modified time - ‎‎26 ‎February ‎2021, ‏‎23:41:34‏‎
+
+"""
+
 import doctor as d
 import patient as p
 import searchDoctor as sd
