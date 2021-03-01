@@ -12,7 +12,7 @@ import pprint
 
 def createUser():
     # Read Json File ->  Record.Json file
-    data = serialzeJson()
+    data = deSerialzeJson()
 
     # User Input Details
     firstName = input("Enter the first name : ")
@@ -46,14 +46,14 @@ def createUser():
 
 def showUserInJson():
     # Read Json File ->  Record.Json file
-    data = serialzeJson()
+    data = deSerialzeJson()
     pprint.pprint(data)
 
 
 def showUser():
 
     # Read Json File ->  Record.Json file
-    data = serialzeJson()
+    data = deSerialzeJson()
 
     for user in data['person']:
         print("\nFirstName: " + user['firstName'] + "\n" + "Last Name : " + user['lastName'] + "\n" + "Address : " + user['address'] + "\n" +
@@ -61,7 +61,7 @@ def showUser():
 
 def delUser():
     # Read Json File ->  Record.Json file
-    data = serialzeJson()
+    data = deSerialzeJson()
 
     # index to display for delete option
     index = 1
@@ -79,7 +79,7 @@ def delUser():
 
 def editUser():
     # Read Json File ->  Record.Json file
-    data = serialzeJson()
+    data = deSerialzeJson()
 
     index = 1
     for user in data['person']:
@@ -98,7 +98,12 @@ def editUser():
     with open("record.json", "w") as f:
         f.write(json_obj)
 
-def serialzeJson():
+def sortUser():
+    pass
+    # Sort using last name of the person (Ties broken by first name)
+    # Sort using zip code of the person (Ties broken by second name)
+
+def deSerialzeJson():
     with open('record.json') as f:
         data = json.loads(f.read())
     return(data)
@@ -107,7 +112,7 @@ if __name__ == "__main__":
     while True:
         print(" ")
         print("User Management Panel")
-        print(" 1.Create User \n 2.Show Users In Json Format \n 3. Show Users \n 4. Delete User \n 5. edit User")
+        print(" 1.Create User \n 2.Show Users In Json Format \n 3. Show Users \n 4. Delete User \n 5. Edit User")
 
         val = input("Enter your choice : \t")
 
