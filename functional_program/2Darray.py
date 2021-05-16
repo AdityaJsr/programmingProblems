@@ -1,21 +1,17 @@
-# A basic code for matrix input from user 
+'''
+ Author: Aditya Kumar
+ Date: 2021-02-12 
+ Last Modified date: 2021-02-14  
+ Title : Create 2D array Problem
+'''
 
-R = int(input("Enter the number of rows:")) 
-C = int(input("Enter the number of columns:")) 
 
-# Initialize matrix 
-matrix = [] 
-print("Enter the entries rowwise:") 
-
-# For user input 
-for i in range(R):		 # A for loop for row entries 
-	a =[] 
-	for j in range(C):	 # A for loop for column entries 
-		a.append(int(input())) 
-	matrix.append(a) 
-
-# For printing the matrix 
-for i in range(R): 
-	for j in range(C): 
-		print(matrix[i][j], end = " ") 
-	print() 
+while True:    
+    try:
+        row=int(input("enter the number of row: "))
+        column=int(input("enter the number of coloumns: "))
+        array=[ [input("enter the value: ") for c in range(column)] for r in range(row)]
+        print("2D array:", array)
+        break
+    except ValueError:
+        print("enter int number only try again!!")
