@@ -2,6 +2,17 @@
 import json
 import os
 from os import path
+import logging
+
+LOG_FORMAT = "%(LeveLname)s %(asctime)s - %(message)s"
+
+logging.basicConfig(filename= "D:\\vs studio\\bridgeLabz\\codes\\programmingProblems\\clinic_log\\clinic.log",
+level=logging.DEBUG, format= LOG_FORMAT)
+
+logger = logging.getLogger()
+
+
+
 doctorsData = []                # Global array to create new json array
 
 '''
@@ -70,8 +81,7 @@ def doctorID():
         with open('clinicData.json') as f:
             if f.read() == '':
                 return(id)
-            else:
-                
+            else: 
                 data = deSerialzeJson()
                 id = len(data['doctorsData'])
                 return(id+1)
@@ -87,6 +97,8 @@ Errors:
 '''
 def shiftInput():
     checkShift = input("Enter shift AM/PM/BOTH : ").upper()
+    logging.debug("Collecting the shift input", checkShift)
+    logger.info
     if (checkShift == 'AM') or (checkShift == 'PM') or (checkShift == 'BOTH'):
         return(checkShift)
     else:
@@ -104,9 +116,13 @@ Errors:
 '''
 def createData():
     name = input("Enter the name : ").upper()
+    logging.debug("Collecting the name input", name)
     id = str(doctorID())
+    logging.debug("Collecting the id input", id)
     specialization = input("Enter the doctors specialization : ").upper()
+    logging.debug("Collecting the specialization input", specialization)
     shift = shiftInput()
+    logging.debug("Collecting the shift input", shift)
 
     x = {
         'name': 'DR '+name, 

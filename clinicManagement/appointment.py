@@ -2,6 +2,7 @@ import json
 import os
 from os import path
 from doctor import deSerialzeJson
+import patient as p
 
 '''
 Function:
@@ -16,12 +17,15 @@ Errors:
 '''
 
 def checkDoctor():
-    queryName = input("Enter the name of the doctor you want you appointment with : ").upper()
-    data = deSerialzeJson()
-    for doctors in data['doctorsData']:
-        if(doctors['name'] == queryName):
-            doctorMatch = doctors['name']
-            return(doctorMatch)
+        try:
+                queryName = input("Enter the name of the doctor you want you appointment with : ").upper()
+        except Exception as e:
+                print("Exception handles", e)
+        data = deSerialzeJson()
+        for doctors in data['doctorsData']:
+                if(doctors['name'] == queryName):
+                        doctorMatch = doctors['name']
+                        return(doctorMatch)
             # Able to search doctors;
 
 '''
@@ -38,7 +42,10 @@ Errors:
 def appointDoctor():
 
     match = checkDoctor()
-    client = input("Enter the your name : ")
+    try:
+        client = input("Enter the your name : ").upper()
+    except Exception as e:
+            print("Sorry an error happend : ")
     appointment = []
     appointment.append(client)
     data = deSerialzeJson()
@@ -52,11 +59,13 @@ def appointDoctor():
 
                     if len(doctors['appointment'])<5:
                         doctors['appointment'].append(client)
+                        p.addPatient()
                         
                     else:
                         print('Sorry appointment list is full : ')    
                 else:
                     doctors['appointment'] = appointment
+                    p.addPatient()
     if flag is not True:
             print("Doctor unavailable : ")
 
@@ -65,6 +74,6 @@ def appointDoctor():
         f.write(json_obj)
 
 
-if __name__ == "__main__":
-    appointDoctor()
+# if __name__ == "__main__":
+    
 
